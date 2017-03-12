@@ -1,0 +1,7 @@
+.spinner {
+    background: #9575cd url('img/ring.gif') 50% 30% no-repeat;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 263px;
+}

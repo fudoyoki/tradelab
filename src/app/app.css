@@ -1,0 +1,56 @@
+#weather-widget {
+    position: relative;
+    background-color: #9575cd;
+    color: #fff;
+    width: 300px;
+    min-height: 323px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px 0 30px 0px;
+}
+
+h1, h2, h3, h4, h5, h6, p, label, select {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h3, h4 {
+    background-color: #7e57c2;
+    font-variant: small-caps;
+}
+
+h3, .forecast {
+    margin: 10px 20px;
+}
+
+label {
+    font-size: 0.8rem;
+}
+
+.select-wrapper {
+    padding: 0 20px 10px;
+    text-align: left;
+}
+
+select {
+    outline: none!important;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.today i {
+    font-size: 3rem;
+    padding: 0 5px 10px 5px;
+}
+
+.forecast-day i {
+  font-size: 2rem;
+  padding: 15px 0;
+}
+
+.forecast-day p {
+    font-size: 0.8rem;
+}
+
+.forecast-day p:first-child {
+    padding-bottom: 5px;
+}

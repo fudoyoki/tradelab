@@ -1,0 +1,27 @@
+<div id="weather-widget">
+
+    <div class="select-wrapper">
+        <label for="cities">Sélectionner votre ville</label>
+        <select id="cities" (change)="onSelect($event.target.value, $event.target)">
+            <option *ngFor="let city of cities; let i = index" [value]="city.id" [attr.ref]="i">{{ city.nm }}</option>
+        </select>
+    </div>
+
+    <spinner-component></spinner-component>
+
+    <div class="today">
+        <h3>{{ selectedCity.nm }}</h3>
+        <div><i [ngClass]="icon"></i></div>
+        <p>{{ temperature }}&deg;</p>
+    </div>
+
+    <div class="forecast">
+        <div class="forecast-day" style="width: 33%; display: inline-block;" *ngFor="let f of threeDayForecast; let i = index;">
+            <h4>{{ f.day }}</h4>
+            <div><i [ngClass]="f.icon"></i></div>
+            <p style="padding-bottom: 5px;">{{ f.temp_min }}&deg;</p>
+            <p>{{ f.temp_max }}&deg;</p>
+        </div>
+    </div>
+
+</div>
