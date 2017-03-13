@@ -62,13 +62,13 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.displayForecast = function () {
         this.threeDayForecast = [];
-        var currentDay = Date.parse(this.datePipe.transform(new Date(), 'yyyy-MM-dd'));
+        var today = Date.parse(this.datePipe.transform(new Date(), 'yyyy-MM-dd'));
         var nextDay = Date.parse(this.datePipe.transform(new Date().getTime() + 24 * 60 * 60 * 1000, 'yyyy-MM-dd'));
         var i, min = [], max = [], forecastDay, forecastDate;
         for (i = 0; i < this.forecast.list.length; i++) {
             forecastDay = new Date(this.forecast.list[i].dt_txt).getDay() - 1;
             forecastDate = Date.parse(this.datePipe.transform(new Date(this.forecast.list[i].dt_txt), 'yyyy-MM-dd'));
-            if (forecastDate !== currentDay) {
+            if (forecastDate !== today) {
                 min.push(Math.round(this.forecast.list[i].main.temp_min));
                 max.push(Math.round(this.forecast.list[i].main.temp_max));
             }

@@ -82,7 +82,7 @@ export class AppComponent implements OnInit  {
 
     this.threeDayForecast = [];
 
-    let currentDay: number = Date.parse(this.datePipe.transform(new Date(), 'yyyy-MM-dd'));
+    let today: number = Date.parse(this.datePipe.transform(new Date(), 'yyyy-MM-dd'));
     let nextDay: number = Date.parse(this.datePipe.transform(new Date().getTime() + 24 * 60 * 60 * 1000, 'yyyy-MM-dd'));
     let i: number, min: any = [], max: any = [], forecastDay: number, forecastDate: number;
 
@@ -91,7 +91,7 @@ export class AppComponent implements OnInit  {
       forecastDay = new Date(this.forecast.list[i].dt_txt).getDay()-1;
       forecastDate = Date.parse(this.datePipe.transform(new Date(this.forecast.list[i].dt_txt), 'yyyy-MM-dd'));
 
-      if(forecastDate !== currentDay) {
+      if(forecastDate !== today) {
         min.push(Math.round(this.forecast.list[i].main.temp_min));
         max.push(Math.round(this.forecast.list[i].main.temp_max));
       }    
