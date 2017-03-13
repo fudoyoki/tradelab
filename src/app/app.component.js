@@ -62,13 +62,12 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.displayForecast = function () {
         this.threeDayForecast = [];
-        var currentDay = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
-        var nextDay = this.datePipe.transform(new Date().getTime() + 24 * 60 * 60 * 1000, 'yyyy-MM-dd');
+        var currentDay = Date.parse(this.datePipe.transform(new Date(), 'yyyy-MM-dd'));
+        var nextDay = Date.parse(this.datePipe.transform(new Date().getTime() + 24 * 60 * 60 * 1000, 'yyyy-MM-dd'));
         var i, min = [], max = [], forecastDay, forecastDate;
         for (i = 0; i < this.forecast.list.length; i++) {
             forecastDay = new Date(this.forecast.list[i].dt_txt).getDay() - 1;
-            forecastDate = this.datePipe.transform(new Date(this.forecast.list[i].dt_txt), 'yyyy-MM-dd');
-            forecastDate = forecastDate.split(' ')[0];
+            forecastDate = Date.parse(this.datePipe.transform(new Date(this.forecast.list[i].dt_txt), 'yyyy-MM-dd'));
             if (forecastDate !== currentDay) {
                 min.push(Math.round(this.forecast.list[i].main.temp_min));
                 max.push(Math.round(this.forecast.list[i].main.temp_max));
@@ -80,7 +79,7 @@ var AppComponent = (function () {
                     'temp_min': Math.max.apply(null, max),
                     'temp_max': Math.min.apply(null, min)
                 });
-                console.log(nextDay);
+                console.log(this.datePipe.transform(new Date(nextDay), 'yyyy-MM-dd'));
                 console.log("min", min);
                 console.log("max", max);
                 nextDay = forecastDate;

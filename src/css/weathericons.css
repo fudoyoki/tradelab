@@ -149,7 +149,8 @@
 
 /* -----Mist----- */
 
-	.wi-icon-701:before  {
+	.wi-icon-701:before,
+	.wi-icon-741:before  {
 		content: "\f014";
 	}
 

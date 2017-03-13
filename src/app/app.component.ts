@@ -82,15 +82,14 @@ export class AppComponent implements OnInit  {
 
     this.threeDayForecast = [];
 
-    let currentDay: string = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
-    let nextDay: string = this.datePipe.transform(new Date().getTime() + 24 * 60 * 60 * 1000, 'yyyy-MM-dd');
-    let i: number, min: any = [], max: any = [], forecastDay: number, forecastDate: string;
+    let currentDay: number = Date.parse(this.datePipe.transform(new Date(), 'yyyy-MM-dd'));
+    let nextDay: number = Date.parse(this.datePipe.transform(new Date().getTime() + 24 * 60 * 60 * 1000, 'yyyy-MM-dd'));
+    let i: number, min: any = [], max: any = [], forecastDay: number, forecastDate: number;
 
     for(i = 0; i < this.forecast.list.length; i++) {
 
       forecastDay = new Date(this.forecast.list[i].dt_txt).getDay()-1;
-      forecastDate = this.datePipe.transform(new Date(this.forecast.list[i].dt_txt), 'yyyy-MM-dd');
-      forecastDate = forecastDate.split(' ')[0];
+      forecastDate = Date.parse(this.datePipe.transform(new Date(this.forecast.list[i].dt_txt), 'yyyy-MM-dd'));
 
       if(forecastDate !== currentDay) {
         min.push(Math.round(this.forecast.list[i].main.temp_min));
@@ -106,7 +105,7 @@ export class AppComponent implements OnInit  {
           'temp_max': Math.min.apply(null, min)
         });
 
-        console.log(nextDay);
+        console.log(this.datePipe.transform(new Date(nextDay), 'yyyy-MM-dd'));
         console.log("min", min);
         console.log("max", max);
 
